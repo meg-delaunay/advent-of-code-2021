@@ -13,9 +13,6 @@ with open(filename) as input_file:
     for row in input_reader:
         #print(row[0])
         depths.append(int(row[0]))
-
-number_depths = len(depths)
-
 groups = []
 
 for i in range(0, len(depths)-2): 
@@ -23,15 +20,11 @@ for i in range(0, len(depths)-2):
     sums = depths[i] + depths[i+1] + depths[i+2]
     groups.append(sums)
 
-print(groups)
-
-current_depth = 99999999999
+current_depth = groups[0]
 increases = 0
-for i in range(0, len(groups)):
+for i in range(1, len(groups)):
     if groups[i] > current_depth:
-        print(current_depth, groups[i])
         increases += 1
-    
     current_depth = groups[i]
 
 print(increases)
